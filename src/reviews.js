@@ -1,39 +1,16 @@
-// import React from 'react';
-
-// function Reviews() {
-//   const reviews = {
-//     harika: "good product",
-//     nikitha: "well",
-//     sowjanya: "nice"
-//   };
-
-//   return (
-//     <div>
-//       <h1>Product Name</h1>
-//       {Object.entries(reviews).map(([reviewer, review], index) => (
-//         <div key={index} style={{ marginBottom: '30px' }}>
-//           <h2>{reviewer}</h2>
-//           <p>{review}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default Reviews;
-
 import React from 'react';
 
-function Reviews() {
-  const reviews = [["harika", "good product"], ['nikitha', "well"], ['sowjanya', "nice"]];
+function Reviews(props) {
+  const reviews = props.r;
+  const reviewer = "Reviewer name";
 
   return (
     <div>
-      <h1>Product Name</h1>
-      {reviews.map(([reviewer, review], index) => (
-        <div key={index} style={{ marginBottom: '30px', lineHeight: 0.5 }}>
-          <h2>{reviewer}</h2>
-          <p>{review}</p>
+      <h4 style={{ marginBottom: '20px', marginTop: '20px' }}>Reviews</h4>
+      {reviews.map((review, index) => (
+        <div key={index} style={{ marginBottom: '25px', lineHeight: 0.5 }}>
+          <p style={{ fontWeight: 'lighter' }}>{reviewer}</p>
+          <p style={{ fontWeight: 'bold' }}>{review}</p>
         </div>
       ))}
     </div>
