@@ -1,20 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState} from 'react';
+import { GlobalContext } from './App';
+
+
 
 function Login() {
     const colRef = useRef(null);
     const passRef = useRef(null);
-    const [errorMessage, setErrorMessage] = useState("");
-
+    const [message, setMessage] = useState("");
+    const {setGlobalIsLogin ,globalUserObj} = useContext(GlobalContext);
+   
     useEffect(() => {
         colRef.current.focus();
     }, [])
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (colRef.current.value === passRef.current.value) {
-            setErrorMessage("Success");
+        if ( globalUserObj.colId === colRef.current.value && globalUserObj.pass === passRef.current.value) {
+            setMessage("Correct");
+            setGlobalIsLogin(true);
         } else {
-            setErrorMessage("Incorrect Credentials");
+            setMessage("Incorrect");
         }
     };
 
@@ -36,9 +41,9 @@ function Login() {
                             <input type="password" className="form-control"  placeholder="Password" ref={passRef} />
                         </div>
                         <button type="submit" className="btn btn-dark btn-md float-end">Login</button><br></br><br></br>
-                        <p className='text-center'>{errorMessage}</p>
+                        <p className='text-center'>{message }</p>
+                       
                     </form>
-                    
                 </div>
                         
                     

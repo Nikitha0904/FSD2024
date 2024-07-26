@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext} from 'react';
 import Login from './login';
 import Register from './register';
+import { GlobalContext } from './App';
+
 
 function Thirteen() {
-    const [counter, setCounter] = useState(true);
+    const {globalIsRegiter, setGlobalIsRegister} = useContext(GlobalContext);
 
     const handleLogin = () => {
-        setCounter(true);
+        setGlobalIsRegister(true);
     };
 
     const handleRegister = () => {
-        setCounter(false);
+        setGlobalIsRegister(false);
     };
 
     return (
         <div>
-            {counter ? (
+            {globalIsRegiter ? (
                 <>
                     <ul className="nav nav-tabs">
                         <li className="nav-item">
